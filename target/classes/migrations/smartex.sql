@@ -1,4 +1,4 @@
-create table if not exists m_role
+create table m_role
 (
 	id bigserial not null
 		constraint role_pk
@@ -8,7 +8,7 @@ create table if not exists m_role
 
 alter table m_role owner to postgres;
 
-create table if not exists m_user
+create table m_user
 (
 	id bigserial not null
 		constraint user_pk
@@ -18,18 +18,20 @@ create table if not exists m_user
 	email varchar not null,
 	role_id bigint not null
 		constraint user_role_id_fk
-			references m_role
+			references m_role,
+	login varchar not null,
+	password varchar not null
 );
 
 alter table m_user owner to postgres;
 
-create unique index if not exists user_id_uindex
+create unique index user_id_uindex
 	on m_user (id);
 
-create unique index if not exists role_id_uindex
+create unique index role_id_uindex
 	on m_role (id);
 
-create table if not exists m_area
+create table m_area
 (
 	id bigserial not null
 		constraint m_area_pk
@@ -39,7 +41,7 @@ create table if not exists m_area
 
 alter table m_area owner to postgres;
 
-create table if not exists m_course
+create table m_course
 (
 	id bigserial not null
 		constraint course_pk
@@ -57,10 +59,10 @@ create table if not exists m_course
 
 alter table m_course owner to postgres;
 
-create unique index if not exists course_id_uindex
+create unique index course_id_uindex
 	on m_course (id);
 
-create table if not exists m_user_course
+create table m_user_course
 (
 	id bigserial not null
 		constraint m_user_course_pk
@@ -76,10 +78,10 @@ create table if not exists m_user_course
 
 alter table m_user_course owner to postgres;
 
-create unique index if not exists m_user_course_id_uindex
+create unique index m_user_course_id_uindex
 	on m_user_course (id);
 
-create table if not exists m_salary
+create table m_salary
 (
 	id bigserial not null
 		constraint m_salary_pk
@@ -96,10 +98,10 @@ create table if not exists m_salary
 
 alter table m_salary owner to postgres;
 
-create unique index if not exists m_salary_id_uindex
+create unique index m_salary_id_uindex
 	on m_salary (id);
 
-create table if not exists m_lesson
+create table m_lesson
 (
 	id bigserial not null
 		constraint m_lesson_pk
@@ -114,9 +116,9 @@ create table if not exists m_lesson
 
 alter table m_lesson owner to postgres;
 
-create unique index if not exists m_lesson_id_uindex
+create unique index m_lesson_id_uindex
 	on m_lesson (id);
 
-create unique index if not exists m_area_id_uindex
+create unique index m_area_id_uindex
 	on m_area (id);
 

@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserService {
 
-    @Autowired UserRepository repo;
+    @Autowired public UserRepository repo;
 
     public void save(User user) {
         repo.save(user);
