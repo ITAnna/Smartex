@@ -4,7 +4,7 @@ package com.smartex.smartexWeb.domain;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "m_user")
 public class User {
     @Id
     @SequenceGenerator(
